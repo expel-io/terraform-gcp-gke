@@ -10,7 +10,6 @@ resource "google_service_account_key" "expel_svc_acct_key" {
 }
 
 # This role grants permissions to list and get Kubernetes resources in GKE
-# It is read-only and excludes 
 resource "google_project_iam_custom_role" "expel_k8s_role" {
   role_id     = var.iam_role_name
   title       = var.iam_role_name
