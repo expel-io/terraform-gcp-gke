@@ -11,6 +11,7 @@ resource "google_service_account_key" "expel_svc_acct_key" {
 
 # This role grants permissions to list and get Kubernetes resources in GKE
 resource "google_project_iam_custom_role" "expel_k8s_role" {
+  project     = var.project
   role_id     = var.iam_role_name
   title       = var.iam_role_name
   description = "Grants read-only access to non-sensitive Kubernetes resources"
@@ -164,17 +165,18 @@ resource "google_project_iam_custom_role" "expel_k8s_role" {
     "container.volumeSnapshotContents.list",
     "container.volumeSnapshots.get",
     "container.volumeSnapshots.list",
-    "resourcemanager.organizations.get",
-    "resourcemanager.folders.get",
-    "resourcemanager.folders.list",
-    "resourcemanager.projects.get",
-    "resourcemanager.projects.list",
   ]
 }
 
 resource "google_project_iam_member" "expel_k8s_role_binding" {
   project = var.project
   role    = google_project_iam_custom_role.expel_k8s_role.name
+  member  = "serviceAccount:${google_service_account.expel_svc_acct.email}"
+}
+
+resource "google_project_iam_member" "expel_browser_role_binding" {
+  project = var.project
+  role    = "roles/browser"
   member  = "serviceAccount:${google_service_account.expel_svc_acct.email}"
 }
 
