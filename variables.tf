@@ -9,6 +9,12 @@ variable "service_account_name" {
   default     = "gke-account"
 }
 
+variable "iam_role_name" {
+  description = "The name of the IAM role to be created for Expel"
+  type        = string
+  default     = "ExpelIntegrationKubernetesReader"
+}
+
 variable "prefix" {
   description = "A prefix to group all Expel integration resources."
   type        = string
