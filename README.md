@@ -24,7 +24,6 @@ The permissions allocated by this module allow Expel Workbench to perform invest
 1. Only supports onboarding a single GCP project, not an entire GCP organization.
 2. Will always create a new log sink
 3. Will always create a new pub/sub queue
-4. Does not modify cluster configuration to grant Expel's service account read-only access (must be done separately)
 
 See Expel's Getting Started Guide for GKE for more onboarding information.
 
