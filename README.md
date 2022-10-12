@@ -4,6 +4,8 @@ Terraform module for configuring Google Kubernetes Engine (GKE) to integrate wit
 Configures a log sink to send data to a pub/sub queue that
 [Expel Workbench](https://workbench.expel.io/) consumes.
 
+:exclamation: Terraform state may contain sensitive information. Please follow best security practices when securing your state.
+
 ## Usage
 ```hcl
 module "expel_gcp_gke" {
