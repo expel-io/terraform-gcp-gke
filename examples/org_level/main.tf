@@ -13,7 +13,7 @@ provider "google" {
 module "expel_gcp_gke_integration" {
   source = "../../"
 
-  # The organization to onboard GKE logs for
+  # The GCP organization to onboard GKE logs for
   org_id = var.org_id
   # A prefix applied to all created resources
   prefix = "expel-integration"

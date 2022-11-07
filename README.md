@@ -9,12 +9,12 @@ Configures a log sink to send data to a pub/sub queue that
 ## Usage
 
 ### Onboarding a GCP Organization with Expel Workbench
-When the `org_id` variable is set, this module will create the resources required to onboard all GKE clusters in an organization to Expel Workbench.
+When the `org_id` variable is set, this module will create the resources required to onboard all GKE clusters in a GCP organization to Expel Workbench.
 ```hcl
 module "expel_gcp_gke" {
   source  = "expel-io/gke/gcp"
   version = "1.0.1"
-
+  # The GCP Organization ID to onboard
   org_id = "my-gcp-project-id"
 }
 ```
@@ -25,7 +25,7 @@ When the `project_id` variable is set, this module will create the resources req
 module "expel_gcp_gke" {
   source  = "expel-io/gke/gcp"
   version = "1.0.1"
-
+  # The GCP Project ID to onboard
   project_id = "my-gcp-project-id"
 }
 ```
