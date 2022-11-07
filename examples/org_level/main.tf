@@ -1,4 +1,4 @@
-variable "project_id" {
+variable "org_id" {
   type = string
 }
 
@@ -13,8 +13,8 @@ provider "google" {
 module "expel_gcp_gke_integration" {
   source = "../../"
 
-  # The project to onboard GKE logs for
-  project_id = var.project_id
+  # The organization to onboard GKE logs for
+  org_id = var.org_id
   # A prefix applied to all created resources
   prefix = "expel-integration"
   # How long pub/sub waits for an acknowledgement
