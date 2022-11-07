@@ -1,6 +1,19 @@
-variable "project" {
-  description = "The project name to onboard with Expel Workbench."
+variable "org_id" {
+  description = "The GCP organization ID to onboard with Expel Workbench."
   type        = string
+  default     = null
+}
+
+variable "project_id" {
+  description = "The GCP project ID to onboard with Expel Workbench."
+  type        = string
+  default     = null
+}
+
+variable "expel_project_id" {
+  description = "When onboarding at the GCP organization level, a new project will be created with this ID."
+  type        = string
+  default     = "expel-gke-integration"
 }
 
 variable "service_account_name" {
