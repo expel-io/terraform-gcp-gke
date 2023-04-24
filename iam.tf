@@ -6,6 +6,7 @@ resource "google_organization_iam_custom_role" "expel_k8s_role" {
   title       = var.iam_role_name
   description = "Grants read-only access to non-sensitive Kubernetes resources"
   permissions = [
+    "compute.instanceGroupManagers.get",
     "container.apiServices.get",
     "container.apiServices.getStatus",
     "container.apiServices.list",
@@ -180,6 +181,7 @@ resource "google_project_iam_custom_role" "expel_k8s_role" {
   title       = var.iam_role_name
   description = "Grants read-only access to non-sensitive Kubernetes resources"
   permissions = [
+    "compute.instanceGroupManagers.get",
     "container.apiServices.get",
     "container.apiServices.getStatus",
     "container.apiServices.list",
