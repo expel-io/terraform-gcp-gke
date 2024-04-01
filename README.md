@@ -31,7 +31,7 @@ module "expel_gcp_gke" {
 ```
 Once you have configured your GCP environment, go to
 https://workbench.expel.io/settings/security-devices?setupIntegration=kubernetes_gke and create a GKE
-security device to enable Expel to begin monitoring your AWS environment.
+security device to enable Expel to begin monitoring your GCP environment.
 
 ## Permissions
 The permissions allocated by this module allow Expel Workbench to perform investigations and discover GKE clusters in the environment.
