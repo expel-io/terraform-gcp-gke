@@ -11,7 +11,8 @@ Terraform module for configuring Google Kubernetes Engine (GKE) to integrate wit
 - [Permissions](#permissions)
 - [Examples](#examples)
 - [Limitations](#limitations)
-- [Contributing](CONTRIBUTING.md)
+- [Issues](#issues)
+- [Contributing](#contributing)
 
 ## Features
 
@@ -70,6 +71,22 @@ You can find examples of how to use this module in the examples directory.
 2. Will always create a new pub/sub queue
 
 See Expel's Getting Started Guide for GKE for more onboarding information.
+
+## Issues
+
+Found a bug or have an idea for a new feature? Please [create an issue](https://github.com/expel-io/terraform_azure_aks/issues). We'll respond as soon as possible!
+
+## Contributing
+
+We welcome contributions! Here's how you can help:
+
+1. Fork the Project.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the Branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+Please read our [Contributing Code of Conduct](CONTRIBUTING.md) to get started.
 
 <!-- begin-tf-docs -->
 ## Requirements
