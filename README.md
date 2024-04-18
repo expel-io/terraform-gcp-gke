@@ -74,7 +74,7 @@ See Expel's Getting Started Guide for GKE for more onboarding information.
 
 ## Issues
 
-Found a bug or have an idea for a new feature? Please [create an issue](https://github.com/expel-io/terraform_azure_aks/issues). We'll respond as soon as possible!
+Found a bug or have an idea for a new feature? Please [create an issue](https://github.com/expel-io/terraform_gcp_gke/issues). We'll respond as soon as possible!
 
 ## Contributing
 
