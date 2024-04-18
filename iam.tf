@@ -1,4 +1,7 @@
 ## ORG-LEVEL IAM RESOURCES ##
+
+# This resource defines a custom IAM role at the organization level.
+# It grants read-only access to non-sensitive Kubernetes resources.
 resource "google_organization_iam_custom_role" "expel_k8s_role" {
   count       = (var.org_id != null && var.project_id == null) ? 1 : 0
   org_id      = var.org_id
@@ -6,6 +9,7 @@ resource "google_organization_iam_custom_role" "expel_k8s_role" {
   title       = var.iam_role_name
   description = "Grants read-only access to non-sensitive Kubernetes resources"
   permissions = [
+    # List of permissions granted to the custom role
     "compute.instanceGroupManagers.get",
     "container.apiServices.get",
     "container.apiServices.getStatus",
@@ -159,6 +163,7 @@ resource "google_organization_iam_custom_role" "expel_k8s_role" {
   ]
 }
 
+# This resource binds the custom IAM role to a service account at the organization level.
 resource "google_organization_iam_member" "expel_k8s_role_binding" {
   count  = (var.org_id != null && var.project_id == null) ? 1 : 0
   org_id = var.org_id
@@ -166,6 +171,7 @@ resource "google_organization_iam_member" "expel_k8s_role_binding" {
   member = "serviceAccount:${google_service_account.expel_svc_acct.email}"
 }
 
+# This resource binds the "roles/browser" role to a service account at the organization level.
 resource "google_organization_iam_member" "expel_browser_role_binding" {
   count  = (var.org_id != null && var.project_id == null) ? 1 : 0
   org_id = var.org_id
@@ -174,6 +180,9 @@ resource "google_organization_iam_member" "expel_browser_role_binding" {
 }
 
 ## PROJECT-LEVEL IAM RESOURCES ##
+
+# This resource defines a custom IAM role at the project level.
+# It grants read-only access to non-sensitive Kubernetes resources.
 resource "google_project_iam_custom_role" "expel_k8s_role" {
   count       = (var.org_id == null && var.project_id != null) ? 1 : 0
   project     = var.project_id
@@ -181,6 +190,7 @@ resource "google_project_iam_custom_role" "expel_k8s_role" {
   title       = var.iam_role_name
   description = "Grants read-only access to non-sensitive Kubernetes resources"
   permissions = [
+    # List of permissions granted to the custom role
     "compute.instanceGroupManagers.get",
     "container.apiServices.get",
     "container.apiServices.getStatus",
@@ -334,6 +344,7 @@ resource "google_project_iam_custom_role" "expel_k8s_role" {
   ]
 }
 
+# This resource binds the custom IAM role to a service account at the project level.
 resource "google_project_iam_member" "expel_k8s_role_binding" {
   count   = (var.org_id == null && var.project_id != null) ? 1 : 0
   project = var.project_id
@@ -341,6 +352,7 @@ resource "google_project_iam_member" "expel_k8s_role_binding" {
   member  = "serviceAccount:${google_service_account.expel_svc_acct.email}"
 }
 
+# This resource binds the "roles/browser" role to a service account at the project level.
 resource "google_project_iam_member" "expel_browser_role_binding" {
   count   = (var.org_id == null && var.project_id != null) ? 1 : 0
   project = var.project_id
