@@ -22,7 +22,7 @@ Terraform module for configuring Google Kubernetes Engine (GKE) to integrate wit
 4. **Message Handling**: Configures the Pub/Sub system to wait for 600 seconds before resending unacknowledged messages.
 5. **Resource Identification**: Applies the prefix "expel-integration" to all resources created by this module for easy identification.
 
-> **Note**: Terraform state may contain sensitive information. Please follow best security practices when securing your state.
+> :exclamation: Terraform state may contain sensitive information. Please follow best security practices when securing your state.
 
 ## Usage
 
