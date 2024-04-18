@@ -15,7 +15,11 @@ Terraform module for configuring Google Kubernetes Engine (GKE) to integrate wit
 
 ## Features
 
-- Configures a log sink to send data to a pub/sub queue that [Expel Workbench](https://workbench.expel.io/) consumes.
+1. **Integration Deployment**: Facilitates GCP GKE and Expel integration for a specific project.
+2. **Resource Creation**: Establishes a Pub/Sub topic, a log sink, and IAM bindings necessary for the integration.
+3. **Log Management**: Implements a filter to selectively collect logs for Expel.
+4. **Message Handling**: Configures the Pub/Sub system to wait for 600 seconds before resending unacknowledged messages.
+5. **Resource Identification**: Applies the prefix "expel-integration" to all resources created by this module for easy identification.
 
 > **Note**: Terraform state may contain sensitive information. Please follow best security practices when securing your state.
 

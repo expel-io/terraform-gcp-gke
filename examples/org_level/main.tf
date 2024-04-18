@@ -1,3 +1,5 @@
+# This Terraform configuration file deploys the Expel GCP GKE Integration module at the organization level.
+# It sets up the necessary resources to onboard GKE logs for a specific GCP organization.
 variable "org_id" {
   type = string
 }
