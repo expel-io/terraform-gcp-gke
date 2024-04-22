@@ -1,15 +1,35 @@
-# terraform-gcp-gke
+# Terraform GCP GKE
+
 Terraform module for configuring Google Kubernetes Engine (GKE) to integrate with [Expel Workbench](https://workbench.expel.io/).
 
-Configures a log sink to send data to a pub/sub queue that
-[Expel Workbench](https://workbench.expel.io/) consumes.
+## Table of Contents
 
-:exclamation: Terraform state may contain sensitive information. Please follow best security practices when securing your state.
+- [Features](#features)
+- [Usage](#usage)
+  - [Onboarding a GCP Organization with Expel Workbench](#onboarding-a-gcp-organization-with-expel-workbench)
+  - [Onboarding a GCP Project with Expel Workbench](#onboarding-a-gcp-project-with-expel-workbench)
+- [Permissions](#permissions)
+- [Examples](#examples)
+- [Limitations](#limitations)
+- [Issues](#issues)
+- [Contributing](#contributing)
+
+## Features
+
+1. **Integration Deployment**: Facilitates GCP GKE and Expel integration for a specific project.
+2. **Resource Creation**: Establishes a Pub/Sub topic, a log sink, and IAM bindings necessary for the integration.
+3. **Log Management**: Implements a filter to selectively collect logs for Expel.
+4. **Message Handling**: Configures the Pub/Sub system to wait for 600 seconds before resending unacknowledged messages.
+5. **Resource Identification**: Applies the prefix "expel-integration" to all resources created by this module for easy identification.
+
+> :exclamation: Terraform state may contain sensitive information. Please follow best security practices when securing your state.
 
 ## Usage
 
 ### Onboarding a GCP Organization with Expel Workbench
+
 When the `org_id` variable is set, this module will create the resources required to onboard all GKE clusters in a GCP organization to Expel Workbench.
+
 ```hcl
 module "expel_gcp_gke" {
   source  = "expel-io/gke/gcp"
@@ -20,7 +40,9 @@ module "expel_gcp_gke" {
 ```
 
 ### Onboarding a GCP Project with Expel Workbench
+
 When the `project_id` variable is set, this module will create the resources required to onboard all GKE clusters in a specific project to Expel Workbench.
+
 ```hcl
 module "expel_gcp_gke" {
   source  = "expel-io/gke/gcp"
@@ -29,18 +51,42 @@ module "expel_gcp_gke" {
   project_id = "my-gcp-project-id"
 }
 ```
-Once you have configured your GCP environment, go to
-https://workbench.expel.io/settings/security-devices?setupIntegration=kubernetes_gke and create a GKE
-security device to enable Expel to begin monitoring your GCP environment.
+
+Once you have configured your GCP environment, go to [Expel Workbench](https://workbench.expel.io/settings/security-devices?setupIntegration=kubernetes_gke) and create a GKE security device to enable Expel to begin monitoring your GCP environment.
 
 ## Permissions
+
 The permissions allocated by this module allow Expel Workbench to perform investigations and discover GKE clusters in the environment.
 
+## Examples
+
+You can find examples of how to use this module in the examples directory.
+
+- [Basic](examples/basic)
+- [Organization](examples/org_level)
+
 ## Limitations
+
 1. Will always create a new log sink
 2. Will always create a new pub/sub queue
 
 See Expel's Getting Started Guide for GKE for more onboarding information.
+
+## Issues
+
+Found a bug or have an idea for a new feature? Please [create an issue](https://github.com/expel-io/terraform-gcp-gke/issues). We'll respond as soon as possible!
+
+## Contributing
+
+We welcome contributions! Here's how you can help:
+
+1. Fork the Project.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the Branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+Please read our [Contributing Code of Conduct](CONTRIBUTING.md) to get started.
 
 <!-- begin-tf-docs -->
 ## Requirements

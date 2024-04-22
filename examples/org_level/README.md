@@ -4,27 +4,55 @@ This configuration sets up appropriate GCP resources that are necessary to integ
 
 This `Org Level` example describes how to onboard all GKE clusters in a GCP organization.
 
+## Table of Contents
+
+- [Variables](#variables)
+- [Provider](#provider)
+- [Module](#module)
+- [Output](#output)
+- [Usage](#usage)
+- [Prerequisites]](#prerequisites)
+
+## Variables
+
+`region`: The region where the resources will be deployed.
+`org_id`: The GCP organization ID to onboard GKE logs for.
+
+## Provider
+
+`google`: The Google Cloud provider configuration, which sets the region based on the input variable.
+
+## Module
+
+`expel_gcp_gke_integration`: The Expel GCP GKE Integration module, which deploys the necessary resources. It requires several input variables to onboard all GKE clusters in a GCP organization to Expel Workbench.
+
+## Output
+
+`expel_gcp_gke_integration`: The output value of the Expel GCP GKE Integration, indicating value is sensitive and should be treated as such.
+
 ## Usage
 
+Follow these steps to deploy the configuration:
 
-To run this example you need to execute:
+1. Initialize Terraform in your working directory. This will download the necessary provider plugins.
+2 Apply the Terraform configuration. Ensure you have a terraform.tfvars file in your working directory with all the necessary variables:
 
-```bash
+```shell
 terraform init
 terraform apply -var-file="terraform.tfvars"
 ```
 
-Note that sensitive values such as the generated service account key are not printed to standard out by default, however they are persisted to the statefile. Please ensure the statefile and it's stored secrets are secured.
+> **Note**: Sensitive data like the service account key isn't displayed in the standard output. However, it's stored in the statefile. Ensure the statefile and its secrets are secured.
 
  To view the service account key created, run:
 
-```bash
+```shell
 terraform output -json
 ```
 
-Note that this example may create resources which cost money (pub/sub queue, for example). Run `terraform destroy` when you don't need these resources.
+> **Note**: This configuration may create resources that incur costs (pub/sub queue, for example). . To avoid unnecessary charges, run the `terraform destroy` command to remove these resources when they are no longer needed.
 
-## Requirements
+## Prerequisites
 
 | Name | Version |
 |------|---------|
